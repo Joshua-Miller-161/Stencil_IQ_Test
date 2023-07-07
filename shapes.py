@@ -53,7 +53,7 @@ def Colorize(xmin, xmax, ymin, ymax, mask, color):
 #====================================================================
 ''' Triangle '''
 def Triangle(xmin, xmax, ymin, ymax, size, color):
-    print(" - - - In Triangle - size: ", size, type(size), ', color: ', color, type(color))
+    #print(" - - - In Triangle - size: ", size, type(size), ', color: ', color, type(color))
     assert type(size) == np.int64 or type(size) == np.int32 or type(size) == int, "'size' must be type int"
     assert 0 < size and size <= min([.5 * (xmax-xmin), .5 * (ymax-ymin)]), "'size must be greater than 0 and less than {bound:.1f}".format(bound=min([.5 * (xmax-xmin), .5 * (ymax-ymin)]))
     
@@ -89,7 +89,7 @@ def Triangle(xmin, xmax, ymin, ymax, size, color):
 #====================================================================
 ''' Square '''
 def Square(xmin, xmax, ymin, ymax, size, color):
-    print(" - - - In Square - size: ", size, type(size), ', color: ', color, type(color))
+    #print(" - - - In Square - size: ", size, type(size), ', color: ', color, type(color))
     assert type(size) == np.int64 or type(size) == np.int32 or type(size) == int, "'size' must be type int"
     assert 0 < size and size <= min([.5 * (xmax-xmin), .5 * (ymax-ymin)]), "'size must be greater than 0 and less than {bound:.1f}".format(bound=min([.5 * (xmax-xmin), .5 * (ymax-ymin)]))
     
@@ -130,7 +130,7 @@ def Square(xmin, xmax, ymin, ymax, size, color):
 #====================================================================
 ''' Rhombus '''
 def Rhombus(xmin, xmax, ymin, ymax, size, color):
-    print(" - - - In Rhombus - size: ", size, type(size), ', color: ', color, type(color))
+    #print(" - - - In Rhombus - size: ", size, type(size), ', color: ', color, type(color))
 
     assert type(size) == np.int64 or type(size) == np.int32 or type(size) == int, "'size' must be type int"
     assert 0 < size and size <= min([.5 * (xmax-xmin), .5 * (ymax-ymin)]), "'size must be greater than 0 and less than {bound:.1f}".format(bound=min([.5 * (xmax-xmin), .5 * (ymax-ymin)]))
@@ -172,9 +172,7 @@ def Rhombus(xmin, xmax, ymin, ymax, size, color):
 #====================================================================
 ''' Circle '''
 def Circle(xmin, xmax, ymin, ymax, radius, color):
-
-    print(" - - - In Circle - radius: ", radius, type(radius), ', color: ', color, type(color))
-
+    #print(" - - - In Circle - radius: ", radius, type(radius), ', color: ', color, type(color))
     assert type(radius) == np.int64 or type(radius) == np.int32 or type(radius) == int, "'radius' must be type int"
     assert 0 < radius and radius <= min([.5 * (xmax-xmin), .5 * (ymax-ymin)]), "'radius must be greater than 0 and less than {bound:.1f}".format(bound=min([.5 * (xmax-xmin), .5 * (ymax-ymin)]))
     
