@@ -37,7 +37,7 @@ def IntToColors(arr, color_key):
     orig_shape = np.shape(arr)
 
     arr = arr.flatten().flatten()
-    print("In IntToColors - arr: ", np.shape(arr))
+    #print("In IntToColors - arr: ", np.shape(arr))
     color_arr = np.empty_like(arr, dtype=object)
 
     for i in range(np.shape(arr)[0]):

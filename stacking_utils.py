@@ -40,9 +40,9 @@ def GetStencil(xmin, xmax, ymin, ymax, shape_name, size, color):
 #====================================================================
 def StackStencils(xmin, xmax, ymin, ymax, shape_names, sizes, colors, return_grid=False, return_outline=False):
     assert len(shape_names)==len(sizes) and len(sizes)==len(colors), "len(shape_names), len(sizes), len(colors) must be equal."
-    print(' - - - in StackStencils - shape =', shape_names)
-    print(' - - - in StackStencils - sizes =', sizes)
-    print(' - - - in StackStencils - color =', colors)
+    #print(' - - - in StackStencils - shape =', shape_names)
+    #print(' - - - in StackStencils - sizes =', sizes)
+    #print(' - - - in StackStencils - color =', colors)
     
     #----------------------------------------------------------------
     layered_colors, stencil_id = np.ones((abs(xmax-xmin)+1, abs(ymax-ymin)+1, 3), float)*9999, '' # Init da variables idk
