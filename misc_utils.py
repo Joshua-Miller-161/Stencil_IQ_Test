@@ -33,7 +33,7 @@ def clockwiseangle_and_distance(point, origin=[0,0], refvec=[0,1]):
 def SortOutline(outline):
     return sorted(outline, key=clockwiseangle_and_distance)
 
-def IntToColors(arr, color_key):
+def IntToColors(arr, letter_full_dict, num_letter_dict):
     orig_shape = np.shape(arr)
 
     arr = arr.flatten().flatten()
@@ -41,7 +41,7 @@ def IntToColors(arr, color_key):
     color_arr = np.empty_like(arr, dtype=object)
 
     for i in range(np.shape(arr)[0]):
-        color_arr[i] = color_key[arr[i]]
+        color_arr[i] = letter_full_dict[num_letter_dict[arr[i]]]
         #print("00000000 color_key[arr[", i, "]] =", color_key[arr[i]], arr[i], ", color_arr[", i, "] = ", color_arr[i])
 
     return color_arr

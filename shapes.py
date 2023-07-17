@@ -12,10 +12,15 @@ ymax = 20
 '''
 #====================================================================
 ''' Int '''
-color_key = {-1: 'black', # For the hole
-             1: 'fuchsia',
-             2: 'aquamarine',
-             3: 'cornflowerblue'}
+num_letter_dict = {0: 'b', # For the hole
+                   1: 'f',
+                   2: 'a',
+                   3: 'c'}
+
+letter_full_dict = {'b': 'black', # For the hole
+                    'f': 'fuchsia',
+                    'a': 'aquamarine',
+                    'c': 'cornflowerblue'}
 #====================================================================
 ''' Mask '''
 def MakeShapeMask(xmin, xmax, ymin, ymax, outline):
@@ -35,20 +40,20 @@ def MakeShapeMask(xmin, xmax, ymin, ymax, outline):
     return mask
 #====================================================================
 def Colorize(xmin, xmax, ymin, ymax, mask, color):
-    assert color in color_key, "valid colors: {} corresponding to: {}".format(color_key.keys, color_key.values)
+    assert color in num_letter_dict, "You put {}. Valid colors: {} corresponding to: {}".format(color, num_letter_dict.keys, letter_full_dict.values)
     # - - - - Give color to the shape. white: background, color: in shape - - - -
     colors = np.zeros((abs(xmax-xmin)+1, abs(ymax-ymin)+1), int)
 
     for i in range(np.shape(colors)[0]):
         for j in range(np.shape(colors)[1]):
             if mask[i][j]: # In shape
-                colors[i][j] = -1 # -1 corresponds to the hole
+                colors[i][j] = 0 # -1 corresponds to the hole
             else: # Outside shape
                 colors[i][j] = color
     
     # - - - - - - - - - Make a grid on which to plot the colors - - - - - - - - -
     x_grid, y_grid = np.meshgrid(np.arange(xmin, xmax+1), np.arange(ymin,ymax+1))
-    print('x_grid: ', np.shape(x_grid), ', y_grid: ', np.shape(y_grid), ', colors: ', np.shape(colors))
+    #print('x_grid: ', np.shape(x_grid), ', y_grid: ', np.shape(y_grid), ', colors: ', np.shape(colors))
     return x_grid, y_grid, colors
 #====================================================================
 ''' Triangle '''

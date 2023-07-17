@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from shapes import Rhombus, Square, Triangle, Circle, color_key
+from shapes import Rhombus, Square, Triangle, Circle, num_letter_dict, letter_full_dict
 #====================================================================
 def StackTwoShapes(shape_colors_1, shape_colors_2):
     # shape_colors_1 goes down first, shape_colors_2 is place over top
@@ -11,7 +11,7 @@ def StackTwoShapes(shape_colors_1, shape_colors_2):
     for i in range(np.shape(layered)[0]):
         for j in range(np.shape(layered)[1]):
             #print(" - - - In StackTwoShapes, shape_colors_2[i][j] =", shape_colors_2[i][j])
-            if (shape_colors_2[i][j] == -1): # -1 corresponds to hole
+            if (shape_colors_2[i][j] == 0): # 0 corresponds to hole
                 layered[i][j] = shape_colors_1[i][j]
 
     return layered
@@ -22,19 +22,19 @@ def GetStencil(xmin, xmax, ymin, ymax, shape_name, size, color):
     x_out, y_out, x_grid, y_grid, identifier, shape_colors = 0, 0, 0, 0, '', 0 # Init da variables idk
     if shape_name=='Circle':
         x_out, y_out, x_grid, y_grid, shape_colors = Circle(xmin, xmax, ymin, ymax, size, color)
-        identifier = 'C'+str(size)+color_key[color][0]+'-'
+        identifier = 'C'+str(size)+num_letter_dict[color]+'-'
     
     elif shape_name=='Triangle':
         x_out, y_out, x_grid, y_grid, shape_colors = Triangle(xmin, xmax, ymin, ymax, size, color)
-        identifier = 'T'+str(size)+color_key[color][0]+'-'
+        identifier = 'T'+str(size)+num_letter_dict[color]+'-'
     
     elif shape_name=='Square':
         x_out, y_out, x_grid, y_grid, shape_colors = Square(xmin, xmax, ymin, ymax, size, color)
-        identifier = 'S'+str(size)+color_key[color][0]+'-'
+        identifier = 'S'+str(size)+num_letter_dict[color]+'-'
     
     elif shape_name=='Rhombus':
         x_out, y_out, x_grid, y_grid, shape_colors = Rhombus(xmin, xmax, ymin, ymax, size, color)
-        identifier = 'R'+str(size)+color_key[color][0]+'-'
+        identifier = 'R'+str(size)+num_letter_dict[color][0]+'-'
     
     return x_out, y_out, x_grid, y_grid, shape_colors, identifier
 #====================================================================
@@ -49,7 +49,7 @@ def StackStencils(xmin, xmax, ymin, ymax, shape_names, sizes, colors, return_gri
     
     for i in range(len(shape_names)-1):
         x_out_1, y_out_1, x_grid_1, y_grid_1, shape_colors_1, identifier_1 = GetStencil(xmin, xmax, ymin, ymax, shape_names[i], sizes[i], colors[i])
-        print(shape_names[i+1])
+        #print(shape_names[i+1])
         x_out_2, y_out_2, x_grid_2, y_grid_2, shape_colors_2, identifier_2 = GetStencil(xmin, xmax, ymin, ymax, shape_names[i+1], sizes[i+1], colors[i+1])
 
         if (i == 0):
